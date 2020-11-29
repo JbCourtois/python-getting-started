@@ -1,16 +1,23 @@
+from django.conf import settings
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import JsonResponse
 
 from .models import Greeting
 
-# Create your views here.
+
 def index(request):
     # return HttpResponse('Hello from Python!')
     return render(request, "index.html")
 
 
-def db(request):
+def debug(request):
+    for _ in range(1000):
+        greeting = Greeting()
+        greeting.save()
+    return JsonResponse(settings.DATABASES, json_dumps_params={'indent': 2})
 
+
+def db(request):
     greeting = Greeting()
     greeting.save()
 

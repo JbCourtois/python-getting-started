@@ -17,5 +17,6 @@ admin.autodiscover()
 urlpatterns = [
     path("", hello.views.index, name="index"),
     path("db/", hello.views.db, name="db"),
+    path("debug/", hello.views.debug, name="debug"),
     path("admin/", admin.site.urls),
 ]
